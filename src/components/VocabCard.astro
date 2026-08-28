@@ -22,7 +22,7 @@ const { hanzi, pinyin, meaning_vi, audio, example_sentence, example_pinyin, exam
       <p class="text-sm font-medium text-red-600">{pinyin}</p>
       <p class="mt-0.5 text-slate-700">{meaning_vi}</p>
     </div>
-    {audio && <AudioButton src={audio} />}
+    {audio && <AudioButton src={audio} text={hanzi} />}
   </div>
   {
     example_sentence && (

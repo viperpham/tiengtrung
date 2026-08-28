@@ -209,8 +209,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     });
     $('fc-speak').addEventListener('click', (e) => {
       e.stopPropagation();
+      const card = deck[idx % deck.length];
+      const speakFallback = () => {
+        const synth = window.speechSynthesis;
+        if (!synth) return;
+        const utterance = new SpeechSynthesisUtterance(card.hanzi);
+        utterance.lang = 'zh-CN';
+        const voice = synth.getVoices().find((v) => v.lang.toLowerCase().startsWith('zh'));
+        if (voice) utterance.voice = voice;
+        synth.speak(utterance);
+      };
       const src = ($('fc-card') as HTMLElement).dataset.audio;
-      if (src) new Audio(src).play().catch(() => {});
+      if (src) new Audio(src).play().catch(speakFallback);
+      else speakFallback();
     });
 
     fetch('/data/content.json')

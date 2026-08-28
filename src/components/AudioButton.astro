@@ -1,10 +1,11 @@
 ---
 interface Props {
   src: string;
+  text?: string;
   class?: string;
 }
 
-const { src, class: className = '' } = Astro.props;
+const { src, text = '', class: className = '' } = Astro.props;
 const id = `audio-${src.replace(/[^a-z0-9]/gi, '-')}`;
 ---
 
@@ -12,6 +13,7 @@ const id = `audio-${src.replace(/[^a-z0-9]/gi, '-')}`;
   id={id}
   type="button"
   data-audio-src={src}
+  data-hanzi={text}
   class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-red-600 text-white transition hover:bg-red-700 active:scale-95"
   aria-label="Phát âm"
 >
@@ -22,6 +24,19 @@ const id = `audio-${src.replace(/[^a-z0-9]/gi, '-')}`;
 
 <script>
   const players = new Map<string, HTMLAudioElement>();
+
+  function speakWithDevice(text: string) {
+    const synth = window.speechSynthesis;
+    if (!synth) return false;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'zh-CN';
+    const voice = synth.getVoices().find((v) => v.lang.toLowerCase().startsWith('zh'));
+    if (voice) utterance.voice = voice;
+    synth.cancel();
+    synth.speak(utterance);
+    return true;
+  }
+
   document.querySelectorAll<HTMLButtonElement>('[data-audio-src]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const src = btn.dataset.audioSrc!;
@@ -31,7 +46,11 @@ const id = `audio-${src.replace(/[^a-z0-9]/gi, '-')}`;
         players.set(src, audio);
       }
       audio.currentTime = 0;
-      audio.play().catch(() => alert('Chưa có file audio: ' + src));
+      audio.play().catch(() => {
+        if (!speakWithDevice(btn.dataset.hanzi || '')) {
+          alert('Chưa có file audio: ' + src);
+        }
+      });
     });
   });
 </script>
