@@ -2,11 +2,11 @@ backend:
   name: github
   repo: viperpham/tiengtrung
   branch: main
+  # Worker xác thực OAuth (sveltia-cms-auth) — base_url PHẢI nằm trong backend
+  base_url: https://sveltia-cms-auth.adu8508.workers.dev
+  auth_endpoint: auth
 
 site_url: https://tiengtrung.adu8508.workers.dev
-# Worker xác thực OAuth (sveltia-cms-auth) đã deploy
-base_url: https://sveltia-cms-auth.adu8508.workers.dev
-auth_endpoint: auth
 
 media_folder: public/audio
 public_folder: /audio
