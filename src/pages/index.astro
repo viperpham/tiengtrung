@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import levels from '../data/levels.json';
+import { getCollection } from 'astro:content';
+
+const vocabCount = (await getCollection('vocabulary')).length;
+const lessonCount = (await getCollection('lessons')).length;
+---
+
+<BaseLayout title="Học tiếng Trung — Từ vựng, Ngữ pháp, Quiz, Flashcard">
+  <section class="rounded-3xl bg-gradient-to-br from-red-600 to-red-800 px-6 py-14 text-center text-white shadow-lg">
+    <h1 class="hanzi text-5xl font-bold">你好！欢迎学习汉语</h1>
+    <p class="mt-3 text-xl text-red-100">Học tiếng Trung theo lộ trình HSK — miễn phí, mỗi ngày một chút</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a
+        href="/hsk/hsk1"
+        class="rounded-full bg-white px-6 py-3 font-semibold text-red-700 shadow transition hover:bg-red-50"
+      >
+        Bắt đầu từ HSK 1 →
+      </a>
+      <a
+        href="/flashcards"
+        class="rounded-full border border-white/40 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+      >
+        Học với Flashcard
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="text-2xl font-bold text-slate-900">Lộ trình HSK</h2>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        levels.map(({ code, name, desc }) => (
+          <a
+            href={`/hsk/${code.toLowerCase()}`}
+            class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-red-300 hover:shadow-md"
+          >
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-bold text-slate-900">{name}</h3>
+              <span class="hanzi text-2xl text-red-600 transition group-hover:scale-110">语</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-500">{desc}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-10 grid gap-4 sm:grid-cols-3">
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+      <p class="text-3xl font-bold text-red-600">{lessonCount}</p>
+      <p class="mt-1 text-sm text-slate-500">Bài học</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+      <p class="text-3xl font-bold text-red-600">{vocabCount}</p>
+      <p class="mt-1 text-sm text-slate-500">Từ vựng có audio</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+      <p class="hanzi text-3xl font-bold text-red-600">免费</p>
+      <p class="mt-1 text-sm text-slate-500">Hoàn toàn miễn phí</p>
+    </div>
+  </section>
+</BaseLayout>

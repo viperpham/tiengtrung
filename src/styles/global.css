@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --font-hanzi: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hanzi {
+  font-family: var(--font-hanzi);
+}

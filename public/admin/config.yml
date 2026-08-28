@@ -1,0 +1,124 @@
+backend:
+  name: github
+  repo: viperpham/tiengtrung
+  branch: main
+
+site_url: https://tiengtrung.pages.dev
+base_url: https://tiengtrung.pages.dev
+auth_endpoint: auth
+
+media_folder: public/audio
+public_folder: /audio
+
+locale: vi
+
+collections:
+  - name: lessons
+    label: Bài học
+    label_singular: Bài học
+    folder: src/content/lessons
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{fields.level}}-bai-{{fields.order}}'
+    sortable_fields: [title, level, order]
+    summary: '{{title}} ({{level}})'
+    fields:
+      - { name: title, label: 'Tiêu đề bài học', widget: string }
+      - name: level
+        label: 'Cấp độ'
+        widget: select
+        options: [HSK1, HSK2, HSK3, HSK4, HSK5, HSK6]
+        default: HSK1
+      - { name: order, label: 'Số thứ tự bài', widget: number, value_type: int, min: 1 }
+      - { name: description, label: 'Mô tả ngắn', widget: text, required: false }
+      - { name: body, label: 'Nội dung bài học', widget: markdown, required: false }
+
+  - name: vocabulary
+    label: Từ vựng
+    label_singular: Từ
+    folder: src/content/vocabulary
+    create: true
+    extension: json
+    format: json
+    slug: '{{fields.level}}-{{fields.pinyin}}'
+    identifier_field: pinyin
+    sortable_fields: [hanzi, pinyin, level, order]
+    summary: '{{hanzi}} ({{pinyin}}) — {{meaning_vi}}'
+    fields:
+      - { name: hanzi, label: 'Chữ Hán 汉字', widget: string }
+      - { name: pinyin, label: 'Phiên âm Pinyin', widget: string, hint: 'VD: nǐ hǎo' }
+      - { name: meaning_vi, label: 'Nghĩa tiếng Việt', widget: string }
+      - { name: meaning_en, label: 'Nghĩa tiếng Anh (tùy chọn)', widget: string, required: false }
+      - name: level
+        label: 'Cấp độ'
+        widget: select
+        options: [HSK1, HSK2, HSK3, HSK4, HSK5, HSK6]
+        default: HSK1
+      - { name: lesson, label: 'Thuộc bài (tên file bài học, VD: hsk1-bai-1)', widget: string, required: false }
+      - { name: audio, label: 'Đường dẫn audio', widget: string, required: false, default: '', hint: 'VD: /audio/hsk1/ni-hao.mp3 — để trống rồi chạy script tts sinh' }
+      - { name: example_sentence, label: 'Câu ví dụ (chữ Hán)', widget: string, required: false }
+      - { name: example_pinyin, label: 'Câu ví dụ (pinyin)', widget: string, required: false }
+      - { name: example_meaning, label: 'Câu ví dụ (nghĩa)', widget: string, required: false }
+      - { name: order, label: 'Số thứ tự', widget: number, value_type: int, default: 99 }
+
+  - name: grammar
+    label: Ngữ pháp
+    label_singular: Ngữ pháp
+    folder: src/content/grammar
+    create: true
+    extension: json
+    format: json
+    slug: '{{fields.level}}-{{slug}}'
+    sortable_fields: [title, level]
+    summary: '{{title}} ({{level}})'
+    fields:
+      - { name: title, label: 'Tên điểm ngữ pháp', widget: string }
+      - name: level
+        label: 'Cấp độ'
+        widget: select
+        options: [HSK1, HSK2, HSK3, HSK4, HSK5, HSK6]
+        default: HSK1
+      - { name: lesson, label: 'Thuộc bài (tên file bài học)', widget: string, required: false }
+      - { name: structure, label: 'Cấu trúc câu', widget: string, hint: 'VD: Chủ ngữ + 是 + Danh từ' }
+      - { name: explanation, label: 'Giải thích', widget: text }
+      - name: examples
+        label: 'Ví dụ'
+        widget: list
+        fields:
+          - { name: hanzi, label: 'Chữ Hán', widget: string }
+          - { name: pinyin, label: 'Pinyin', widget: string }
+          - { name: meaning, label: 'Nghĩa', widget: string }
+
+  - name: quizzes
+    label: Bài kiểm tra
+    label_singular: Bài kiểm tra
+    folder: src/content/quizzes
+    create: true
+    extension: json
+    format: json
+    slug: '{{fields.level}}-{{slug}}'
+    sortable_fields: [title, level]
+    summary: '{{title}} ({{level}})'
+    fields:
+      - { name: title, label: 'Tên bài kiểm tra', widget: string }
+      - name: level
+        label: 'Cấp độ'
+        widget: select
+        options: [HSK1, HSK2, HSK3, HSK4, HSK5, HSK6]
+        default: HSK1
+      - { name: lesson, label: 'Thuộc bài (tên file bài học)', widget: string, required: false }
+      - name: questions
+        label: 'Câu hỏi'
+        widget: list
+        fields:
+          - { name: question, label: 'Câu hỏi', widget: string }
+          - { name: hint_audio, label: 'Audio gợi ý (tùy chọn)', widget: string, required: false }
+          - name: options
+            label: 'Các lựa chọn (4 đáp án)'
+            widget: list
+            min: 2
+            max: 4
+            field: { label: 'Lựa chọn', widget: string }
+          - { name: answer, label: 'Số thứ tự đáp án đúng (bắt đầu từ 0)', widget: number, value_type: int, min: 0, max: 3 }
+          - { name: explanation, label: 'Giải thích (tùy chọn)', widget: text, required: false }

@@ -1,0 +1,37 @@
+---
+interface Props {
+  src: string;
+  class?: string;
+}
+
+const { src, class: className = '' } = Astro.props;
+const id = `audio-${src.replace(/[^a-z0-9]/gi, '-')}`;
+---
+
+<button
+  id={id}
+  type="button"
+  data-audio-src={src}
+  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-red-600 text-white transition hover:bg-red-700 active:scale-95"
+  aria-label="Phát âm"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+    <path d="M8 5v14l11-7z" />
+  </svg>
+</button>
+
+<script>
+  const players = new Map<string, HTMLAudioElement>();
+  document.querySelectorAll<HTMLButtonElement>('[data-audio-src]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const src = btn.dataset.audioSrc!;
+      let audio = players.get(src);
+      if (!audio) {
+        audio = new Audio(src);
+        players.set(src, audio);
+      }
+      audio.currentTime = 0;
+      audio.play().catch(() => alert('Chưa có file audio: ' + src));
+    });
+  });
+</script>

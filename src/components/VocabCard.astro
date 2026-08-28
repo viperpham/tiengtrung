@@ -1,0 +1,36 @@
+---
+import AudioButton from './AudioButton.astro';
+
+interface Props {
+  hanzi: string;
+  pinyin: string;
+  meaning_vi: string;
+  audio?: string;
+  example_sentence?: string;
+  example_pinyin?: string;
+  example_meaning?: string;
+}
+
+const { hanzi, pinyin, meaning_vi, audio, example_sentence, example_pinyin, example_meaning } =
+  Astro.props;
+---
+
+<div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
+  <div class="flex items-start gap-4">
+    <span class="hanzi text-4xl font-bold leading-none text-slate-900">{hanzi}</span>
+    <div class="min-w-0 flex-1">
+      <p class="text-sm font-medium text-red-600">{pinyin}</p>
+      <p class="mt-0.5 text-slate-700">{meaning_vi}</p>
+    </div>
+    {audio && <AudioButton src={audio} />}
+  </div>
+  {
+    example_sentence && (
+      <div class="mt-3 border-t border-dashed border-slate-200 pt-3 text-sm text-slate-600">
+        <p class="hanzi text-base text-slate-800">{example_sentence}</p>
+        <p class="text-red-500/90">{example_pinyin}</p>
+        <p>{example_meaning}</p>
+      </div>
+    )
+  }
+</div>

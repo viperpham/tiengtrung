@@ -1,0 +1,12 @@
+{
+  "title": "Hỏi tuổi với 多大",
+  "level": "HSK1",
+  "lesson": "hsk1-bai-2",
+  "structure": "Chủ ngữ + 多大 (+ 了)？",
+  "explanation": "多大 (duō dà) nghĩa là 'bao nhiêu tuổi'. Hỏi trẻ em thường dùng 你多大？; lễ phép hơn dùng 您多大年纪？ Trả lời: số + 岁 (tuổi).",
+  "examples": [
+    { "hanzi": "你多大？", "pinyin": "Nǐ duō dà?", "meaning": "Bạn bao nhiêu tuổi?" },
+    { "hanzi": "我二十岁。", "pinyin": "Wǒ èrshí suì.", "meaning": "Tôi hai mươi tuổi." },
+    { "hanzi": "他多大了？", "pinyin": "Tā duō dà le?", "meaning": "Anh ấy bao nhiêu tuổi rồi?" }
+  ]
+}

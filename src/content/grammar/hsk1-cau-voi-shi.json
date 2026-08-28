@@ -1,0 +1,12 @@
+{
+  "title": "Câu trần thuật với 是",
+  "level": "HSK1",
+  "lesson": "hsk1-bai-1",
+  "structure": "Chủ ngữ + 是 + Danh từ",
+  "explanation": "是 (shì) tương đương động từ 'là' trong tiếng Việt. Dùng để giới thiệu nghề nghiệp, quốc tịch, danh tính. Phủ định dùng 不是 (búshì).",
+  "examples": [
+    { "hanzi": "我是学生。", "pinyin": "Wǒ shì xuésheng.", "meaning": "Tôi là học sinh." },
+    { "hanzi": "他是老师。", "pinyin": "Tā shì lǎoshī.", "meaning": "Anh ấy là giáo viên." },
+    { "hanzi": "我不是老师。", "pinyin": "Wǒ bú shì lǎoshī.", "meaning": "Tôi không phải là giáo viên." }
+  ]
+}

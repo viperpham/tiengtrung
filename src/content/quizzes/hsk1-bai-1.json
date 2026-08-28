@@ -1,0 +1,37 @@
+{
+  "title": "Kiểm tra Bài 1: Chào hỏi và giới thiệu",
+  "level": "HSK1",
+  "lesson": "hsk1-bai-1",
+  "questions": [
+    {
+      "question": "「你好」 nghĩa là gì?",
+      "options": ["Tạm biệt", "Xin chào", "Cảm ơn", "Xin lỗi"],
+      "answer": 1,
+      "explanation": "你好 (nǐ hǎo) là lời chào thông dụng nhất: 'xin chào'."
+    },
+    {
+      "question": "「我是学生」 dịch nghĩa là gì?",
+      "options": ["Tôi là giáo viên", "Tôi là học sinh", "Tôi học bài", "Bạn là học sinh"],
+      "answer": 1,
+      "explanation": "我 = tôi, 是 = là, 学生 = học sinh."
+    },
+    {
+      "question": "Chữ nào nghĩa là 'giáo viên'?",
+      "options": ["学生", "老师", "同学", "朋友"],
+      "answer": 1,
+      "explanation": "老师 (lǎoshī) = giáo viên."
+    },
+    {
+      "question": "Đâu là cách nói 'Tôi tên là Tiểu Minh'?",
+      "options": ["我叫小明。", "我是小明吗？", "他叫小明。", "小明是什么？"],
+      "answer": 0,
+      "explanation": "叫 (jiào) = tên là. 我叫小明 = Tôi tên là Tiểu Minh."
+    },
+    {
+      "question": "Câu 「她是老师吗？」 là loại câu gì?",
+      "options": ["Câu trần thuật", "Câu mệnh lệnh", "Câu hỏi Có-Không (với 吗)", "Câu cảm thán"],
+      "answer": 2,
+      "explanation": "Trợ từ 吗 cuối câu biến câu trần thuật thành câu hỏi Có-Không."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  { "code": "HSK1", "name": "HSK 1", "desc": "Cơ bản nhất — khoảng 150 từ vựng", "order": 1 },
+  { "code": "HSK2", "name": "HSK 2", "desc": "Khoảng 300 từ vựng", "order": 2 },
+  { "code": "HSK3", "name": "HSK 3", "desc": "Khoảng 600 từ vựng", "order": 3 },
+  { "code": "HSK4", "name": "HSK 4", "desc": "Khoảng 1200 từ vựng", "order": 4 },
+  { "code": "HSK5", "name": "HSK 5", "desc": "Khoảng 2500 từ vựng", "order": 5 },
+  { "code": "HSK6", "name": "HSK 6", "desc": "Khoảng 5000+ từ vựng", "order": 6 }
+]
