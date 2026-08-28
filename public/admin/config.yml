@@ -4,8 +4,8 @@ backend:
   branch: main
 
 site_url: https://tiengtrung.adu8508.workers.dev
-# base_url trỏ tới Cloudflare Worker xác thực (sveltia-cms-auth) — thay bằng URL worker của bạn sau khi deploy
-base_url: https://tiengtrung-auth.adu8508.workers.dev
+# Worker xác thực OAuth (sveltia-cms-auth) đã deploy
+base_url: https://sveltia-cms-auth.adu8508.workers.dev
 auth_endpoint: auth
 
 media_folder: public/audio
