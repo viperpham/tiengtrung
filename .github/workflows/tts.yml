@@ -38,6 +38,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "Không có audio mới cần sinh."
           else
-            git commit -m "🔊 Auto-generate audio cho từ vựng mới [skip ci]"
+            git commit -m "🔊 Auto-generate audio cho từ vựng mới"
             git push
           fi
